@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csi.mapper.CourseMapper">
+
+    <resultMap id="EditCourseResultMap" type="com.csi.vo.EditCourse">
+        <id property="id" column="c_id"/>
+        <result property="courseName" column="c_name"/>
+
+        <!-- Collection of EditChapter objects -->
+        <collection property="chapterList" ofType="com.csi.vo.EditChapter">
+            <id property="id" column="p_id"/>
+            <result property="chapterName" column="p_name"/>
+            <result property="orderIndex" column="p_index"/>
+
+            <!-- Collection of EditLesson objects within each EditChapter -->
+            <collection property="lessonList" ofType="com.csi.vo.EditLesson">
+                <id property="id" column="l_id"/>
+                <result property="lessonName" column="l_name"/>
+                <result property="orderIndex" column="l_index"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <!--新增课程-->
+    <insert id="add">
+        INSERT INTO course(
+        course_name,
+        course_description,
+        course_createdate,
+        course_status,
+        teacher_id,
+        live_status,
+        category_id,
+        application_people,
+        course_feature,
+        cover_pic
+        )VALUES (
+        #{courseName},
+        #{courseDescription},
+        #{courseCreatedate},
+        0,
+        #{teacherId},
+        0,
+        #{categoryId},
+        #{applicationPeople},
+        #{courseFeature},
+        #{coverPic}
+        )
+    </insert>
+
+    <!--通过课程id查询简单的课程-章节-课时结构-->
+    <select id="getCourseStr" resultMap="EditCourseResultMap">
+        SELECT
+        c.id as c_id,
+        c.course_name as c_name,
+        p.id as p_id,
+        p.chapter_name as p_name,
+        p.order_index as p_index,
+        l.id as l_id,
+        l.lesson_name as l_name,
+        l.order_index as l_index
+        FROM
+        course c
+        LEFT JOIN chapter p ON c.id = p.course_id
+        LEFT JOIN lesson l ON p.id = l.chapter_id
+        WHERE c.id = #{courseId}
+    </select>
+
+
+
+    <!--        通过教师id查询课程-->
+    <select id="findCourseByTeaId" parameterType="string" resultType="com.csi.domain.Course">
+
+        select *
+        from course
+        where teacher_id = #{teacherId}
+        and course_status = 1;
+
+    </select>
+
+
+
+    <select id="findCourseById" resultType="com.csi.domain.Course">
+        select * from course where id = #{id}
+    </select>
+
+
+    <resultMap id="courseResultMap" type="com.csi.domain.StudentCourse">
+
+        <id column="id" property="id"></id>
+
+        <result column="process" property="process" />
+
+        <association property="course" javaType="com.csi.domain.Course">
+
+            <id property="id" column="id"></id>
+
+        </association>
+
+        <association property="teacher" javaType="com.csi.domain.Teacher">
+
+            <id property="teacherId" column="teacher_id"></id>
+
+        </association>
+
+
+    </resultMap>
+
+    <select id="findCourseByStuId" resultMap="courseResultMap">
+        SELECT
+        c.id,
+        c.course_name,
+        c.course_description,
+        c.course_createdate,
+        c.course_price,
+        c.live_status,
+        c.cover_pic,
+        sc.process,
+        sc.id,
+        sc.teacher_id,
+        sc.course_id,
+        sc.student_id,
+        t.teacher_id,
+        t.secret_key
+        FROM
+        course c
+        JOIN
+        student_course sc ON c.id = sc.course_id
+        JOIN
+        teacher t on c.teacher_id = t.teacher_id
+        WHERE
+        sc.student_id = #{studentId}
+    </select>
+
+    <insert id="teaAddCourse" parameterType="com.csi.domain.Course" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO course(
+        course_name,
+        course_description,
+        course_createdate,
+        course_status,
+        teacher_id,
+        live_status,
+        category_id,
+        application_people,
+        course_feature
+        )VALUES (
+        #{courseName},
+        #{courseDescription},
+        #{courseCreatedate},
+        0,
+        #{teacherId},
+        0,
+        #{categoryId},
+        #{applicationPeople},
+        #{courseFeature}
+        )
+    </insert>
+
+    <update id="insertCoverPic" >
+
+        update course
+        set cover_pic = #{coverPic}
+        where id = #{id}
+
+    </update>
+
+
+    <!--根据类型id查询课程信息-->
+    <select id="courseList" parameterType="integer">
+        select * from course where category_id = #{categoryId}
+    </select>
+
+<!--    查询所有课程-->
+    <select id="findCourseName" resultType="com.csi.domain.Course">
+        SELECT * FROM course
+        <where>
+            <if test="courseName != null and courseName != ''">
+                AND course_name LIKE CONCAT('%', #{courseName}, '%')
+            </if>
+        </where>
+    </select>
+
+
+
+<!--    查询课程价格-->
+    <select id="findCoursePrice" resultType="double">
+        select course_price from order where course_id=#{courseId}
+    </select>
+
+<!--  查看直播状态  -->
+    <select id="selectLiveStatus" resultType="int">
+        select live_status  from course where id=#{courseId}
+    </select>
+
+    <!--查询学生已退课程 -->
+    <select id="selectRetiredCourse" resultType="com.csi.domain.Course">
+        SELECT t2.course_name,t2.cover_pic,t3.teacher_name
+        FROM `order` t1 JOIN  course t2
+        ON (t1.course_id= t2.id)
+        JOIN teacher t3
+        ON t2.teacher_id=t3.teacher_id
+        WHERE t1.order_status=-1  and student_id=#{studentId}
+    </select>
+</mapper>

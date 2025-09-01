@@ -1,0 +1,24 @@
+*{
+
+    margin: 0;
+    padding: 0;
+
+}
+
+div.live-section{
+
+    width:1200px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 200px;
+}
+
+div.live-title{
+
+    border-bottom-color: rgb(229, 229, 229);
+    border-bottom-style: solid;
+    border-bottom-width: 1.6px;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}

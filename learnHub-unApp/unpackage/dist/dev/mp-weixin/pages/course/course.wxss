@@ -1,0 +1,134 @@
+/* 水平间距 */
+/* 水平间距 */
+.logo.data-v-ffd98509 {
+  width: 70rpx;
+  height: 70rpx;
+  display: inline-block;
+}
+.search-view uni-search-bar.data-v-ffd98509 {
+  display: inline-block;
+  width: 600rpx;
+}
+.box.data-v-ffd98509 {
+  background-color: white;
+  width: 100%;
+  padding: 26rpx;
+}
+.classify-title.data-v-ffd98509 {
+  height: 11rpx;
+}
+.classify-title image.data-v-ffd98509 {
+  width: 55rpx;
+  height: 55rpx;
+  margin-top: 6rpx;
+}
+.classify-title image.data-v-ffd98509, .title-view.data-v-ffd98509 {
+  float: left;
+}
+.title-view.data-v-ffd98509 {
+  margin-left: 20rpx;
+  margin-top: 10rpx;
+  font-size: 37rpx;
+  font-weight: bold;
+}
+.close-all image.data-v-ffd98509, .close-all view.data-v-ffd98509 {
+  float: left;
+}
+.close-all image.data-v-ffd98509 {
+  width: 45rpx;
+  height: 45rpx;
+  margin-top: 6rpx;
+}
+.close.data-v-ffd98509 {
+  padding: 27rpx;
+}
+.close-all view.data-v-ffd98509 {
+  margin-left: 20rpx;
+  width: 100rpx;
+  margin-top: 10rpx;
+  font-size: 33rpx;
+  width: 200rpx;
+  color: gray;
+}
+.close-all.data-v-ffd98509 {
+  height: 100rpx;
+  width: 490rpx;
+  border-bottom: 1px solid lightgray;
+}
+.close-classify.data-v-ffd98509 {
+  height: 600rpx;
+}
+.close-classify-title.data-v-ffd98509 {
+  margin-top: 20rpx;
+  width: 490rpx;
+  height: 40rpx;
+}
+.close-classify-title image.data-v-ffd98509, .close-classify-title view.data-v-ffd98509 {
+  float: left;
+}
+.close-classify-title image.data-v-ffd98509 {
+  width: 45rpx;
+  height: 45rpx;
+  margin-top: 6rpx;
+}
+.close-classify-title view.data-v-ffd98509 {
+  margin-left: 20rpx;
+  width: 100rpx;
+  margin-top: 10rpx;
+  font-size: 33rpx;
+  width: 200rpx;
+  color: gray;
+}
+.classify-name.data-v-ffd98509 {
+  float: left;
+  margin-left: 50rpx;
+  margin-top: 60rpx;
+  font-size: 33rpx;
+  width: 198rpx;
+  height: 50rpx;
+}
+.close-classify-text.data-v-ffd98509 {
+  float: left;
+  width: 500rpx;
+}
+.course-view.data-v-ffd98509 {
+  margin-top: 70rpx;
+}
+
+/* 设置 li 的内边距和下边框 */
+.course-view-li.data-v-ffd98509 {
+  width: 90%;
+  box-sizing: border-box;
+  /* 确保 padding 不会影响整体大小 */
+  padding: 30rpx;
+  /* 内边距 */
+  border-bottom: 1rpx solid lightgray;
+  /* 下边框，颜色改为红色，宽度为2rpx */
+  display: flex;
+  /* 使用 Flexbox */
+  align-items: center;
+  /* 垂直居中 */
+}
+.course-img image.data-v-ffd98509 {
+  width: 300rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+  /* 圆角大小，可以根据需要调整 */
+}
+.course-img.data-v-ffd98509, .course-text.data-v-ffd98509 {
+  display: inline-block;
+  height: 200rpx;
+}
+.course-text.data-v-ffd98509 {
+  margin-left: 20rpx;
+}
+.course-school.data-v-ffd98509 {
+  margin-top: 100rpx;
+}
+.course-name.data-v-ffd98509 {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.course-school.data-v-ffd98509 {
+  color: gray;
+}

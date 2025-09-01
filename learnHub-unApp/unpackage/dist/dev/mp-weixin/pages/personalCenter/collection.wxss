@@ -1,0 +1,37 @@
+/* 水平间距 */
+/* 水平间距 */
+.li_view.data-v-7d53e31f {
+  width: 100%;
+  height: 200rpx;
+  border-bottom: 0.5rpx solid lightgray;
+}
+.course_img.data-v-7d53e31f {
+  float: left;
+  width: 320rpx;
+  height: 100rpx;
+}
+.course_text.data-v-7d53e31f {
+  padding-top: 10px;
+  float: left;
+  width: 140rpx;
+  height: 100rpx;
+}
+.course_img image.data-v-7d53e31f {
+  margin-top: 10rpx;
+  margin-left: 5rpx;
+  width: 300rpx;
+  height: 180rpx;
+  border-radius: 25rpx;
+}
+.title_box.data-v-7d53e31f {
+  width: 500rpx;
+  height: 70rpx;
+}
+.cansole.data-v-7d53e31f {
+  margin-top: 20px;
+  background-color: indianred;
+  padding: 10rpx 10rpx;
+  color: white;
+  font-size: 28rpx;
+  border-radius: 5px;
+}

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace等于mapper接口类的全限定名,这样实现对应 -->
+<mapper namespace="com.csi.mapper.StudentMapper">
+
+    <resultMap id="StudentResultMap" type="com.csi.domain.Student">
+        <id property="studentId" column="student_id"/>
+        <result property="studentName" column="student_name"/>
+        <result property="studentPassword" column="student_password"/>
+        <result property="studentSex" column="student_sex"/>
+        <result property="studentBorndate" column="student_borndate"/>
+        <result property="studentPhone" column="student_phone"/>
+        <result property="studentEmail" column="student_email"/>
+        <result property="studentHeadphone" column="student_headphone"/>
+        <result property="studentCreatedate" column="student_creatdate"/>
+        <result property="studentStatus" column="student_status"/>
+        <result property="studentLike" column="student_like"/>
+    </resultMap>
+
+
+    <update id="update">
+        update student
+        <set>
+            <if test="studentHeadphone != null and studentHeadphone != ''">
+                student_headphone = #{studentHeadphone},
+            </if>
+            <if test="studentName != null and studentName != ''">
+                student_name = #{studentName},
+            </if>
+            <if test="studentPassword != null and studentPassword != ''">
+                student_password = #{studentPassword},
+            </if>
+            <if test="studentSex != null and studentSex != ''">
+                student_sex = #{studentSex},
+            </if>
+            <if test="studentPhone != null and studentPhone != ''">
+                student_phone = #{studentPhone},
+            </if>
+            <if test="studentEmail != null and studentEmail != ''">
+                student_email = #{studentEmail},
+            </if>
+            <if test="studentBorndate != null">
+                student_borndate = #{studentBorndate},
+            </if>
+        </set>
+        where student_id = #{studentId}
+    </update>
+
+    <select id="findById" resultMap="StudentResultMap">
+        SELECT
+        *
+        FROM student
+        WHERE student_id = #{studentId}
+    </select>
+
+    <select id="findByName" resultMap="StudentResultMap">
+        select * from student where student_name = #{studentName}
+    </select>
+
+<!--    密码登录-->
+    <select id="loginStudent" resultMap="StudentResultMap">
+        SELECT * FROM student
+        WHERE student_name= #{studentName} AND student_password = #{studentPassword}
+    </select>
+<!--    密码登录（老师）-->
+    <select id="loginTeacher" resultType="com.csi.domain.Teacher">
+        SELECT * FROM teacher
+        WHERE teacher_name= #{teacherName} AND teacher_password = #{teacherPassword}
+    </select>
+<!--    通过手机号查询学生(用于验证码登录)-->
+    <select id="findByPhone" resultMap="StudentResultMap">
+        SELECT * FROM student
+        WHERE student_phone= #{studentPhone}
+    </select>
+
+<!--    注册（学生）-->
+    <insert id="save" parameterType="Student">
+        INSERT INTO student(student_name,student_password,student_email,student_phone,student_creatdate)
+        VALUE(#{studentName},#{studentPassword},#{studentEmail},#{studentPhone},#{studentCreatedate})
+    </insert>
+
+    <update id="saveLike">
+        UPDATE student
+        SET student_like = #{likeString}
+        WHERE student_id = #{studentId}
+    </update>
+
+</mapper>

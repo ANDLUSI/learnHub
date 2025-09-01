@@ -1,0 +1,20 @@
+/* 水平间距 */
+/* 水平间距 */
+.titlt text.data-v-1375d3d7 {
+  margin-right: 130rpx;
+}
+.li_view.data-v-1375d3d7 {
+  height: 100rpx;
+  width: 100%;
+  border-bottom: 1rpx solid whitesmoke;
+}
+.li_view view.data-v-1375d3d7 {
+  float: left;
+  /* background-color: red; */
+  overflow: hidden;
+  width: 220rpx;
+  margin-right: 20rpx;
+  font-size: 28rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}

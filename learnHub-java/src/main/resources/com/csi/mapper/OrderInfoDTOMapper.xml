@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace等于mapper接口类的全限定名,这样实现对应 -->
+<mapper namespace="com.csi.mapper.OrderInfoDTOMapper">
+
+    <!--查询学生订单-->
+    <select id="selStudentOrder" resultType="com.csi.domain.OrderInfoDTO">
+        SELECT
+        o.id AS id,
+        t.teacher_name AS teacherName,
+        c.course_name AS courseName,
+        o.course_price AS coursePrice,
+        o.course_buydate AS courseBuyDate
+        FROM
+        `order` o
+        LEFT JOIN
+        course c ON o.course_id = c.id
+        LEFT JOIN
+        teacher t ON c.teacher_id = t.teacher_id
+        where
+        o.student_id = #{studentId}
+    </select>
+</mapper>

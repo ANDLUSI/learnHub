@@ -1,0 +1,55 @@
+
+/* 外层div */
+.box-view.data-v-cbc3f036{
+	padding: 30rpx;
+	text-align: center;
+}
+.like-title.data-v-cbc3f036{
+	font-size: 40rpx;
+	margin-top: 60rpx;
+}
+/* 标签样式 */
+.category-container.data-v-cbc3f036 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30rpx;
+  margin-left: 43rpx;
+}
+.category-item.data-v-cbc3f036 {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.category-item.active.data-v-cbc3f036 {
+  background-color: #07b1ff;
+  color: white;
+  border-color: #07b1ff;
+}
+.hidden-checkbox.data-v-cbc3f036 {
+  display: none; /* 隐藏原生复选框 */
+}
+
+/* 确保文字在长方形内上下左右居中 */
+.category-item.data-v-cbc3f036 {
+  height: 37px; /* 根据需要调整高度 */
+  line-height: 37px; /* 使单行文本垂直居中 */
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+  border-radius: 10rpx;
+}
+.into-button.data-v-cbc3f036{
+	background-color: #007aff;
+	color: white;
+	padding: 13rpx 30rpx;
+	border-radius: 100rpx;
+	margin-top: 100rpx;
+	font-size: 36rpx;
+}

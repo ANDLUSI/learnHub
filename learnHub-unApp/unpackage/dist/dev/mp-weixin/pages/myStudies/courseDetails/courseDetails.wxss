@@ -1,0 +1,56 @@
+
+.header {
+		background-image: linear-gradient(135deg, #3581df, #8789f5);	
+		height: 300rpx;
+		position: relative;
+}
+uni-collapse-item {
+		height: auto;
+		/* 确保高度根据内容自动调整 */
+		min-height: 0;
+		/* 移除可能的最小高度限制 */
+}
+.slot-image {
+		width: 40rpx;
+		margin-right: 40rpx;
+		margin-left: 30rpx;
+}
+.progress {
+		font-size: 4px;
+		margin-right: 10rpx;
+}
+.learnedProgress {
+		color: #fff;
+		font-size: 25rpx;
+}
+.header>.title {
+		font-weight: 500;
+		color: #fff;
+		margin-left: 40rpx;
+		padding-top: 60rpx;
+}
+.header button {
+		position: absolute;
+		right: 0;
+		border-style: none;
+}
+.learnedProgress {
+		margin-top: 100rpx;
+		margin-left: 40rpx;
+}
+.learnedProgress text {
+		margin-left: 10rpx;
+		font-size: 16px;
+}
+.notLesson {
+		height: 80rpx;
+		line-height: 80rpx;
+		color: indianred;
+		font-size: 26rpx;
+		text-align: center;
+}
+.uni-badge-left-margin {
+		position: relative;
+		left: 80%;
+		top: 20%;
+}

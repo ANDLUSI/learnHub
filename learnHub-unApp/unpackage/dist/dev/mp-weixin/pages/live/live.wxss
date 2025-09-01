@@ -1,0 +1,14 @@
+/* 水平间距 */
+/* 水平间距 */
+#myVideo.data-v-4934862e {
+  text-align: center;
+  margin-left: 95rpx;
+}
+.uni-list-cell-db.data-v-4934862e {
+  width: 600rpx;
+  margin-left: 95rpx;
+}
+.uni-padding-wrap.data-v-4934862e {
+  position: relative;
+  top: 280rpx;
+}

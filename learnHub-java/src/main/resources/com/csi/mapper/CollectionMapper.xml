@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace等于mapper接口类的全限定名,这样实现对应 -->
+<mapper namespace="com.csi.mapper.CollectionMapper">
+
+
+    <resultMap id="collectionResultMap" type="com.csi.domain.CollectionMy">
+        <id column="n_id" property="id"/>
+        <result column="student_id" property="studentId"/>
+        <result column="course_id" property="courseId"/>
+        <association property="course" javaType="com.csi.domain.Course">
+            <id column="course_id" property="id"/>
+            <result column="course_name" property="courseName"/>
+            <result column="cover_pic" property="coverPic"/>
+        </association>
+    </resultMap>
+
+    <insert id="add">
+        INSERT INTO collection (student_id,course_id) VALUES(#{studentId},#{courseId})
+    </insert>
+
+    <delete id="del">
+        DELETE FROM collection WHERE id = #{id}
+    </delete>
+
+    <select id="findListBySId" resultMap="collectionResultMap">
+        SELECT
+        n.id n_id,
+        n.student_id,
+        n.course_id,
+        c.course_name,
+        c.cover_pic
+        FROM
+        collection n
+        LEFT JOIN course c
+        ON n.course_id = c.id
+        WHERE n.student_id = #{studentId}
+    </select>
+
+    <select id="findCollection">
+        SELECT * FROM collection WHERE student_id = #{studentId} AND course_id = #{courseId}
+    </select>
+</mapper>

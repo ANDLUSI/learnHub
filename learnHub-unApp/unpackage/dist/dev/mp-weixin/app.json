@@ -1,0 +1,67 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/course/course",
+    "pages/myStudies/myStudies",
+    "pages/assistant/assistant",
+    "pages/personalCenter/personalCenter",
+    "pages/courseList/courseList",
+    "pages/live/live",
+    "pages/courseDetails/courseDetails",
+    "pages/personalCenter/teacherCenter",
+    "pages/personalCenter/collection",
+    "pages/personalCenter/myCourse",
+    "pages/personalCenter/buyLog",
+    "pages/personalCenter/modifyStudnet",
+    "pages/personalCenter/teacherCourse",
+    "pages/personalCenter/teacherEditCoures",
+    "pages/personalCenter/addChapter",
+    "pages/personalCenter/addLesson",
+    "pages/myStudies/courseDetails/courseDetails",
+    "pages/myStudies/courseVideo/courseVideo",
+    "pages/personalCenter/teacherAddCourse",
+    "pages/loginAndReg/index",
+    "pages/loginAndReg/codelogin",
+    "pages/loginAndReg/register",
+    "pages/loginAndReg/choseLike",
+    "pages/live/live-info",
+    "pages/firstCourse/firstCourse",
+    "pages/TabOne/TabOne"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tabBar/主页.png",
+        "selectedIconPath": "static/tabBar/主页1.png"
+      },
+      {
+        "pagePath": "pages/course/course",
+        "iconPath": "static/tabBar/列表.png",
+        "selectedIconPath": "static/tabBar/列表1.png"
+      },
+      {
+        "pagePath": "pages/myStudies/myStudies",
+        "iconPath": "static/tabBar/学习.png",
+        "selectedIconPath": "static/tabBar/学习1.png"
+      },
+      {
+        "pagePath": "pages/assistant/assistant",
+        "iconPath": "static/tabBar/问答.png",
+        "selectedIconPath": "static/tabBar/问答1.png"
+      },
+      {
+        "pagePath": "pages/personalCenter/personalCenter",
+        "iconPath": "static/tabBar/mine.png",
+        "selectedIconPath": "static/tabBar/mine1.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

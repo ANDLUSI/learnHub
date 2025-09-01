@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.170.30.152/learn_hub?serverTimezone=GMT%2B8
+    username: root
+    password: root
+
+  data:
+    redis:
+      #host: 192.168.110.53
+      host: 192.170.30.116
+      port: 6379
+
+  rabbitmq:
+    #host: 192.168.110.53
+    host: 192.170.30.233
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+
+  servlet:
+    multipart:
+      max-file-size: 2000MB # 单个文件的最大大小
+      max-request-size: 5000MB # 总请求的最大大小
+
+mybatis:
+  type-aliases-package: com.csi.domain
+  configuration:
+    map-underscore-to-camel-case: true
+
+server:
+  tomcat:
+    max-swallow-size: -1 # 允许无限制的上传大小（谨慎使用）
+    max-http-form-post-size: 5000MB

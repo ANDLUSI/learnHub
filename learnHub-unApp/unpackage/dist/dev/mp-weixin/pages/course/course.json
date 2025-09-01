@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "课程列表",
+  "usingComponents": {
+    "uni-search-bar": "../../uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar",
+    "uni-drawer": "../../uni_modules/uni-drawer/components/uni-drawer/uni-drawer",
+    "uni-section": "../../uni_modules/uni-section/components/uni-section/uni-section"
+  }
+}

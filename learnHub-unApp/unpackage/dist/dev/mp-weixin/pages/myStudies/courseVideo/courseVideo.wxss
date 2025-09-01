@@ -1,0 +1,20 @@
+
+.main {
+		position: relative;
+}
+video {
+		width: 100%;
+}
+.nextCourse {
+		bottom: -100rpx;
+		color: #1296db;
+		position: absolute;
+		right: 0;
+		margin-right: 20rpx;
+}
+.nextCourse image {
+		position: relative;
+		top: 10rpx;
+		width: 30rpx;
+		height: 40rpx;
+}

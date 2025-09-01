@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csi.mapper.ChapterMapper">
+
+    <!--根据课程id查询章节信息-->
+    <select id="findChapterById" resultType="com.csi.domain.Chapter">
+        select id, chapter_name, order_index from chapter where course_id = #{id}
+        order by order_index
+    </select>
+
+
+    <!--新增章节信息-->
+    <insert id="insertChapter" parameterType="com.csi.domain.Chapter">
+        insert into chapter(course_id, chapter_name, order_index, createdate)
+            value (#{courseId}, #{chapterName}, #{orderIndex}, #{creatdate})
+    </insert>
+
+    <delete id="del">
+        DELETE FROM chapter WHERE id = #{id}
+    </delete>
+
+
+</mapper>

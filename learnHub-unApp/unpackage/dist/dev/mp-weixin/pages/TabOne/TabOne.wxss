@@ -1,0 +1,120 @@
+
+.course-detail.data-v-85257ec5 {
+		padding: 20px;
+}
+.course-image.data-v-85257ec5 {
+		width: 100%;
+		height: 300px;
+}
+.course-info.data-v-85257ec5 {
+		margin-top: 20px;
+}
+.title.data-v-85257ec5 {
+		font-size: 20px;
+		font-weight: bold;
+}
+.tag.data-v-85257ec5 {
+		background-color: #ff4500;
+		color: #fff;
+		padding: 5px 15px;
+		border-radius: 20px;
+		margin-left: 10px;
+}
+.university-logo.data-v-85257ec5 {
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		margin-right: 10px;
+}
+.university-name.data-v-85257ec5 {
+		font-size: 20px;
+		margin-right: 10px;
+}
+.enrollment.data-v-85257ec5 {
+		color: #666;
+}
+.course-description.data-v-85257ec5 {
+		margin-top: 20px;
+		font-size: 18px;
+		color: #666;
+}
+.class-info.data-v-85257ec5 {
+		margin-top: 30px;
+		border-top: 1px solid #ddd;
+		padding-top: 20px;
+}
+.class-title.data-v-85257ec5 {
+		font-size: 20px;
+		font-weight: bold;
+}
+.class-date.data-v-85257ec5 {
+		color: #666;
+		margin-top: 10px;
+}
+.teacher-team.data-v-85257ec5 {
+		margin-top: 30px;
+		border-top: 1px solid #ddd;
+		padding-top: 20px;
+}
+.team-title.data-v-85257ec5 {
+		font-size: 20px;
+		font-weight: bold;
+}
+.teacher-item.data-v-85257ec5 {
+		display: flex;
+		margin-top: 20px;
+}
+.teacher-image.data-v-85257ec5 {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		margin-right: 20px;
+}
+.teacher-info.data-v-85257ec5 {
+		flex: 1;
+}
+.teacher-name.data-v-85257ec5 {
+		font-size: 20px;
+		font-weight: bold;
+}
+.teacher-position.data-v-85257ec5 {
+		margin-top: 10px;
+		color: #666;
+}
+
+	/* 	.teacher-description {
+		margin-top: 10px;
+		color: #666;
+	} */
+.enroll-button.data-v-85257ec5 {
+		margin-top: 30px;
+		display: flex;
+}
+.money.data-v-85257ec5 {
+		/* border: 1px solid red; */
+		width: 100rpx;
+		height: 100rpx;
+		margin-top: 10px;
+		font-size: 18px;
+		color: #ff4500;
+}
+.enroll-btn.data-v-85257ec5 {
+		width: 170px;
+		height: 50px;
+		background-color: #2877f2;
+		color: #fff;
+		border-radius: 25px;
+		font-size: 18px;
+		font-weight: bold;
+		margin-right: 10px;
+}
+.collection_btn.data-v-85257ec5{
+		width: 80rpx;
+		height: 80rpx;
+		position:absolute;
+		left: 280rpx;
+}
+.collection_btn image.data-v-85257ec5{
+		width: 80rpx;
+		height: 80rpx;
+}

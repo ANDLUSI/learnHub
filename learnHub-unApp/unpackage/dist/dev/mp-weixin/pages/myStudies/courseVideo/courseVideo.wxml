@@ -1,0 +1,1 @@
+<view class="main"><view><video id="myVideo" src="{{a}}" controls show-mute-btn="true" object-fit="fill" bindcanplay="{{b}}" bindpause="{{c}}" bindended="{{d}}" bindtimeupdate="{{e}}"></video></view><view wx:if="{{f}}" class="nextCourse" bindtap="{{h}}">下一讲<image src="{{g}}"></image></view></view>

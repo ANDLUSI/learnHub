@@ -1,0 +1,23 @@
+
+.content>view {
+		width: auto;
+		height: auto;
+}
+.slot-image {
+		border-radius: 4px;
+		width: 200rpx;
+		margin-right: 20px;
+}
+.custom-nav>view {
+		height: 200rpx;
+}
+.uni-badge-left-margin {
+		position: absolute;
+		bottom: 70%;
+		left: 5%;
+}
+.noContent{
+		text-align: center;
+		margin-top: 260rpx;
+		color: #b0b0b0;
+}

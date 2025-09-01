@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csi.mapper.TeacherMapper">
+
+    <!--    教师直播，修改课程表中的直播状态为-->
+    <update id="modifyCourseLiveStatus" parameterType="com.csi.domain.Course">
+        UPDATE course
+        set live_status = case
+        when live_status = 0 then 1
+        when live_status = 1 then 0
+        end
+        WHERE id = #{id}
+        AND teacher_id = #{teacherId}
+    </update>
+
+    <!--    关闭直播-->
+    <update id="modifyLiveLiveStatus" parameterType="integer">
+        UPDATE live
+        set live_status =  0
+        WHERE id = #{id}
+    </update>
+
+
+    <!--    开启直播时调用方法，为直播表增加数据-->
+    <insert id="saveLive" parameterType="com.csi.domain.Live" useGeneratedKeys="true" keyProperty="id" >
+
+        INSERT INTO live (
+        title,
+        description,
+        course_id,
+        teacher_id,
+        live_url,
+        secret_key,
+        live_status
+        ) VALUES (
+        #{title},
+        #{description},
+        #{courseId},
+        #{teacherId},
+        #{liveUrl},
+        #{secretKey},
+        1
+        )
+
+    </insert>
+
+
+    <!--查询教师信息-->
+    <select id="findTeacherById" resultType="com.csi.domain.Teacher">
+        select teacher_id,teacher_name, teacher_headphone, teacher_description, real_name,secret_key from teacher where teacher_id = #{id}
+    </select>
+
+    <resultMap id="findTeaIsLiveMap" type="com.csi.domain.Live">
+
+        <id column="id" property="id"></id>
+
+        <association property="course" javaType="com.csi.domain.Course">
+
+            <id property="id" column="course_id"></id>
+
+        </association>
+
+    </resultMap>
+
+    <!--    查看当前老师是否有直播的课程-->
+    <select id="findTeaIsLive" resultMap="findTeaIsLiveMap">
+
+        select l.*,c.*
+        from live l
+        join
+        course c on c.id = l.course_id
+        where
+        l.teacher_id = #{teacherId}
+        and
+        l.live_status = 1;
+
+    </select>
+
+    <!--查询所有教师-->
+    <select id="selTeacher" resultType="com.csi.domain.Teacher">
+        SELECT
+        teacher_name,teacher_sex,teacher_borndate,teacher_phone,
+        teacher_email,teacher_headphone,course_count as teacherCount,
+        teacher_status,teacher_id
+        FROM teacher
+        <where>
+            <if test="search != null and search != ''">
+                teacher_name LIKE CONCAT('%', #{search}, '%')
+            </if>
+        </where>
+    </select>
+
+    <select id="findCourseByTeacherId" resultType="com.csi.domain.Course">
+
+        select *
+        from  course
+        where teacher_id = #{teacherId}
+
+    </select>
+
+    <!--    更新教师课程数量-->
+    <update id="modCourseCount" parameterType="integer">
+        UPDATE teacher
+        set  course_count =  (course_count+1)
+        WHERE teacher_id = #{teacherId}
+    </update>
+
+
+
+    <!--查询教师订单-->
+    <select id="selTeacherOrder" resultType="com.csi.domain.OrderInfoDTO">
+        SELECT
+        c.course_name,
+        o.course_price,
+        s.student_name,
+        o.course_buydate
+        FROM
+        course c
+        JOIN
+        `order` o ON c.id = o.course_id
+        LEFT JOIN
+        student s ON o.student_id = s.student_id
+        WHERE
+        c.teacher_id = #{teacherId}
+    </select>
+
+
+    <!--查询教师详细信息-->
+    <select id="selInformation" resultType="com.csi.domain.Teacher">
+        SELECT * FROM teacher
+        where teacher_id = #{teacherId}
+    </select>
+
+
+
+    <update id="modTeacherInfo" parameterType="com.csi.domain.Teacher">
+        update teacher
+        <set>
+            <if test="teacherName != null and teacherName != ''">
+                teacher_name = #{teacherName},
+            </if>
+            <if test="teacherPassword != null and teacherPassword != ''">
+                teacher_password = #{teacherPassword},
+            </if>
+            <if test="teacherSex != null and teacherSex != ''">
+                teacher_sex = #{teacherSex},
+            </if>
+            <if test="teacherPhone != null and teacherPhone != ''">
+                teacher_phone = #{teacherPhone},
+            </if>
+            <if test="teacherEmail != null and teacherEmail != ''">
+                teacher_email = #{teacherEmail},
+            </if>
+            <if test="teacherHeadphone != null and teacherHeadphone != ''">
+                teacher_headphone = #{teacherHeadphone},
+            </if>
+            <if test="teacherBorndate != null">
+                teacher_borndate = #{teacherBorndate}
+            </if>
+            <if test="teacherDescription != null and teacherDescription != ''">
+                teacher_description = #{teacherDescription}
+            </if>
+
+        </set>
+        where teacher_id = #{teacherId}
+    </update>
+
+
+</mapper>

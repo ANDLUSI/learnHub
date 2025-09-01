@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csi.mapper.StudentCourseMapper">
+
+    <resultMap id="studentCourseResultMap" type="com.csi.domain.StudentCourse">
+        <id column="id" property="id"/>
+        <result column="process" property="process"/>
+        <result column="course_id" property="courseId"/>
+        <result column="course_name" property="courseName"/>
+        <result column="teacher_id" property="teacherId"/>
+        <result column="teacher_name" property="teacherName"/>
+        <result column="cover_pic" property="coverPic"/>
+        <result column="course_status" property="courseStatus"/>
+        <result column="live_status" property="liveStatus"/>
+    </resultMap>
+
+     <!--查询学生报名课程基本信息以及正在学习课程进度-->
+    <select id="findAllByStuId"  resultMap="studentCourseResultMap">
+        SELECT t1.id,t1.process,t1.course_id,t2.course_name,t2.course_status,t2.live_status,t2.cover_pic,t3.teacher_name
+        FROM student_course t1 JOIN course t2
+        ON(t1.course_id=t2.id)
+        JOIN teacher t3
+        ON(t1.teacher_id=t3.teacher_id)
+        <where>
+            t1.student_id=#{studentId}
+            <if test="courseStatus!=null">
+                and t2.course_status=#{courseStatus}
+            </if>
+        </where>
+    </select>
+
+    <!--查询课程进度-->
+    <select id="selectCourseProcess" resultType="double">
+        select process from student_course where student_id = #{studentId} and course_id = #{courseId}
+    </select>
+
+    <!--更新课程进度-->
+    <update id="updateCourseProcess">
+        update student_course set process = #{process} where student_id = #{studentId} and course_id = #{courseId}
+    </update>
+
+<!--  查询学生课程下总观看进度-->
+    <select id="selectAllProcess" resultType="double">
+        SELECT COALESCE(SUM(t1.watched_process * t2.duration*60) / NULLIF(SUM(t2.duration)*60, 0), 0) AS total_watched_percentage
+        FROM lesson_process t1 JOIN lesson t2
+        ON t1.lesson_id=t2.id
+        WHERE t1.student_id=#{studentId} AND t1.course_id=#{courseId}
+    </select>
+
+    <!--    购买课程后为学生课程表添加数据-->
+    <insert id="bindStudentCourse" parameterType="com.csi.domain.Order">
+        insert into student_course(student_id,teacher_id,course_id)
+        value(#{studentId},#{teacherId},#{courseId})
+
+    </insert>
+<!--  删除学生与课程关系-->
+    <delete id="dropCourse">
+        delete from student_course where student_id=#{studentId} and course_id=#{courseId}
+    </delete>
+
+
+<!--  查询是否可以退课-->
+    <select id="findIsDrop" resultType="int">
+        select is_drop  from student_course  where student_id=#{studentId} and course_id=#{courseId}
+    </select>
+<!--    修改不能退课-->
+    <update id="modifyIsDrop" >
+        update student_course set is_drop=-1
+    </update>
+</mapper>

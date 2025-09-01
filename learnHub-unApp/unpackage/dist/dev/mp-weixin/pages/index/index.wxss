@@ -1,0 +1,255 @@
+/* 水平间距 */
+/* 水平间距 */
+.navbar.data-v-1cf27b2a {
+  margin-left: 10px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+}
+.logo.data-v-1cf27b2a {
+  margin-left: 5px;
+  padding-right: 13rpx;
+  margin-top: 2px;
+}
+.search.data-v-1cf27b2a {
+  border: 1px solid gainsboro;
+  width: 370rpx;
+  height: 90rpx;
+  border-radius: 1.2em;
+  margin-left: 10px;
+  padding-left: 100rpx;
+  margin-right: 10px;
+  /* 为图片留出空间 */
+  position: relative;
+  text-align: left;
+}
+.pic.data-v-1cf27b2a {
+  position: absolute;
+  left: 155rpx;
+  /* 调整图片的位置 */
+  top: 29px;
+  transform: translateY(-50%);
+  width: 55rpx;
+  /* 调整图片大小 */
+  height: 50rpx;
+}
+.swiper-item.data-v-1cf27b2a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* 图片样式 */
+.swiper-image.data-v-1cf27b2a {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* 保持图片的宽高比，并填充整个容器 */
+}
+.sec.data-v-1cf27b2a {
+  display: flex;
+  flex-wrap: wrap;
+  /* 允许换行 */
+}
+.photo-grid.data-v-1cf27b2a {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  /* 创建5列 */
+  gap: 4rpx;
+  row-gap: -100rpx;
+  /* 设置列与列之间的间距 */
+  padding: 3px;
+  /* 内边距以避免边缘紧贴容器 */
+}
+.photo-container.data-v-1cf27b2a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rpx;
+  margin-top: 12rpx;
+  /* 内边距以提供额外的空间 */
+  /* 圆角效果 */
+  min-height: 70px;
+  /* 设置最小高度以确保有足够空间 */
+}
+.photo.data-v-1cf27b2a {
+  width: 60%;
+  /* 图片宽度为父容器的100% */
+  height: 34%;
+  /* 自动调整高度以保持比例 */
+  object-fit: cover;
+  /* 保持图片比例并裁剪 */
+  margin-bottom: 7px;
+  /* 图片与描述之间的间距 */
+}
+.photo-caption.data-v-1cf27b2a {
+  font-size: 12px;
+  /* 文字大小 */
+  white-space: nowrap;
+  /* 防止文字换行 */
+  text-overflow: ellipsis;
+  /* 超出部分用省略号表示 */
+  overflow: hidden;
+  /* 超出部分隐藏 */
+  width: 100%;
+  /* 确保文字宽度与容器一致 */
+}
+.container.data-v-1cf27b2a {
+  padding: 20px;
+}
+.tag-bar.data-v-1cf27b2a {
+  display: flex;
+  overflow-x: auto;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  white-space: nowrap;
+  position: relative;
+}
+.tags-container.data-v-1cf27b2a {
+  display: flex;
+  flex-wrap: nowrap;
+  /* 防止换行 */
+}
+.tag-item.data-v-1cf27b2a {
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  display: inline-block;
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  min-width: 70px;
+  /* 设置最小宽度 */
+  text-align: center;
+  /* 居中文本 */
+  white-space: nowrap;
+  /* 防止文本换行 */
+  height: 30px;
+  /* 设置固定高度 */
+  line-height: 30px;
+  /* 垂直居中文本 */
+}
+.tag-item.active.data-v-1cf27b2a {
+  color: #34A2E8;
+  font-weight: bold;
+  background-color: #eaf6ff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.underline.data-v-1cf27b2a {
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  background-color: #34A2E8;
+  left: 0;
+  transition: transform 0.3s ease, width 0.3s ease;
+}
+.course.data-v-1cf27b2a {
+  width: 300rpx;
+  height: 270rpx;
+  margin-top: -30px;
+  border-radius: 2em;
+}
+.words p.data-v-1cf27b2a {
+  display: block;
+  margin-top: -20px;
+}
+.afford.data-v-1cf27b2a {
+  display: flex;
+  flex-direction: row;
+}
+.guess.data-v-1cf27b2a {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap-reverse;
+  margin-left: 48rpx;
+}
+.change.data-v-1cf27b2a {
+  display: flex;
+  margin-left: 400rpx;
+}
+.recommend-item.data-v-1cf27b2a {
+  display: flex;
+  flex-direction: unset;
+  padding: 10px;
+}
+.item-image.data-v-1cf27b2a {
+  width: 160px;
+  /* 根据需要调整 */
+  height: 100px;
+  /* 根据需要调整 */
+  margin-bottom: 5px;
+}
+.item-caption.data-v-1cf27b2a {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 30em;
+  display: block;
+  margin-top: 4px;
+  width: 150px;
+}
+.caption2.data-v-1cf27b2a {
+  font-size: 12px;
+  margin-top: 25px;
+  margin-left: -136px;
+  width: 270rpx;
+  height: 150rpx;
+}
+.other-items.data-v-1cf27b2a {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+.other-item.data-v-1cf27b2a {
+  width: calc(50% - 10px);
+  /* Adjust based on the number of columns you want */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.other-item-image.data-v-1cf27b2a {
+  width: 100%;
+  height: 150px;
+  /* You can adjust this to fit your design */
+  object-fit: contain;
+  /* Ensure the image fits within the container without distorting */
+}
+.other-item-content.data-v-1cf27b2a {
+  padding: 16px;
+  flex-grow: 1;
+}
+.other-item-title.data-v-1cf27b2a {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.other-item-description.data-v-1cf27b2a {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 12px;
+}
+.other-item-tags.data-v-1cf27b2a {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.other-item-tag.data-v-1cf27b2a {
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: #666;
+  border: 1px solid #e0e0e0;
+}

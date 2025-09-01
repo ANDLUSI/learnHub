@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace等于mapper接口类的全限定名,这样实现对应 -->
+<mapper namespace="com.csi.mapper.OrderMapper">
+
+    <insert id="addOrder" >
+
+        insert into `order`(student_id,course_id,course_price,course_buydate)
+        value(#{studentId},#{courseId},#{coursePrice},#{courseBuyDate})
+
+    </insert>
+
+
+    <select id="selOrder" resultType="com.csi.domain.Order">
+        SELECT
+        o.id AS id,
+        s.student_name AS studentName,
+        t.teacher_name AS teacherName,
+        c.course_name AS courseName,
+        o.course_price AS coursePrice,
+        o.course_buydate AS courseBuyDate
+        FROM
+        `order` o
+        LEFT JOIN
+        student s ON o.student_id = s.student_id
+        LEFT JOIN
+        course c ON o.course_id = c.id
+        LEFT JOIN
+        teacher t ON c.teacher_id = t.teacher_id
+        WHERE s.student_id = #{studentId}
+    </select>
+
+<!-- 学生退课修改订单状态-->
+    <update id="modifyOrderStatus">
+        update `order` set order_status=#{orderStatus} where student_id=#{studentId} and course_id=#{courseId}
+    </update>
+    
+<!--    查询学生购买课程价格-->
+    <select id="findOrderPrice" resultType="double">
+        select course_price from `order` where student_id=#{studentId} and course_id=#{courseId} limit 1
+    </select>
+
+
+</mapper>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csi.mapper.LessonProcessMapper">
+    <resultMap id="lessonProcessMap" type="com.csi.domain.LessonProcess">
+        <id column="processId" property="id" />
+        <result column="watched_process" property="watchedProcess"/>
+        <association property="lesson" javaType="com.csi.domain.Lesson">
+            <id column="lessonId" property="id"/>
+            <result column="lesson_name" property="lessonName"/>
+            <result column="video_url" property="videoUrl"/>
+            <result column="duration" property="duration"/>
+            <result column="order_index" property="orderIndex"/>
+        </association>
+    </resultMap>
+
+       <select id="findAllLessonProcess" resultMap="lessonProcessMap">
+           SELECT t1.id 'lessonId', t1.lesson_name ,t1.video_url,t1.duration,t1.order_index,t2.watched_process,t2.id 'processId'
+           FROM  lesson t1 LEFT JOIN lesson_process t2
+           ON (t1.id=t2.lesson_id)
+           WHERE t1.course_id=#{courseId}  and  t1.chapter_id=#{chapterId}
+           ORDER BY t1.order_index ASC
+       </select>
+
+
+
+    <!--更新视频的进度/最新观看时长-->
+    <update id="updateProcess" parameterType="com.csi.domain.LessonProcess">
+        update lesson_process set watched_process = #{watchedProcess},lastUpdateTime = #{lastUpdateTime} where student_id = #{studentId} and lesson_id = #{lessonId}
+    </update>
+
+
+    <!--新增信息-->
+    <insert id="insertLessonProcess" parameterType="com.csi.domain.LessonProcess">
+        insert into lesson_process(student_id, course_id, lesson_id, watched_process,lastUpdateTime, chapter_id)
+        value(#{studentId}, #{courseId}, #{lessonId},#{watchedProcess}, #{lastUpdateTime}, #{chapterId})
+    </insert>
+
+
+    <!--查询表里是否有数据-->
+    <select id="selectLessonProcess" parameterType="integer" resultType="com.csi.domain.LessonProcess">
+        select chapter_id from lesson_process where student_id = #{studentId} and lesson_id = #{lessonId}
+    </select>
+
+
+    <!--查询视频进度-->
+    <select id="readVideoProcess" resultType="double">
+        select watched_process from lesson_process where student_id = #{studentId} and lesson_id = #{lessonId}
+    </select>
+
+
+    <!--查询视频最新观看断点-->
+    <select id="readLastUpdateTime" resultType="double">
+        select lastUpdateTime from lesson_process where student_id = #{studentId} and lesson_id = #{lessonId}
+    </select>
+
+    <!--删除学生观看课程记录-->
+    <delete id="deleteLessonProcess">
+        delete  from lesson_process where student_id=#{studentId} and course_id=#{courseId}
+    </delete>
+
+
+</mapper>

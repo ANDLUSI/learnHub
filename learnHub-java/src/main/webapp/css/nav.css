@@ -1,0 +1,158 @@
+/* 导航栏开始 */
+
+.width100 {
+	/* background-color: white; */
+	width: 100%;
+}
+
+.L-header{
+	background-color: white;
+}
+
+/* 容器整体样式 */
+.top {
+	min-width: 1200px;
+	margin-right: 50px;
+	height: 65px;
+	line-height: 65px;
+	display: flex;
+	justify-content: center; /* 水平居中对齐 */
+	align-items: center; /* 垂直居中 */
+	gap: 30px; /* 控制子元素之间的间距 */
+}
+
+/* 居中对齐样式 */
+.logo-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.logo {
+	width: 50px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+}
+
+.logo-container span {
+	font-size: 25px;
+	color: #0882ce;
+	font-weight: bolder;
+	font-style: italic;
+}
+
+
+/* 搜索框样式 */
+.search_container{
+	position: relative;
+}
+
+.search_container .top_input input {
+	width: 400px;
+	border-radius: 2em;
+	border: 1px solid #1994DA;
+	line-height: 35px;
+	font-size: 14px;
+	padding-left: 20px;
+	background-color: #fdfdfd;
+}
+
+/* 菜单列表 */
+.top_word ul {
+	display: flex;
+	gap: 35px;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.top_word ul li {
+	color: grey;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+/* 个人信息区域 */
+.top_person {
+	display: flex;
+	align-items: center;
+	gap: 25px;
+}
+
+.top_person .top_login {
+	font-size: 16px;
+}
+
+.top_person .person_img {
+	position: relative;
+}
+
+.person_img img {
+	position: absolute;
+	top: -20px;
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+}
+
+.login_hidden {
+	position: absolute;
+	background-color: #fff;
+	width: 120px;
+	z-index: 1;
+	top:31px;
+	height:170px;
+	left: -35px;
+	display: none;
+	border: 1px solid #CCC;
+}
+
+.person_img:hover .login_hidden {
+	display: block;
+}
+
+.login_hidden .ul_hidden {
+	list-style: none;
+}
+
+.login_hidden {
+	position: absolute;
+	background-color: #fff;
+	padding-left: 50px;
+	width: 120px;
+	z-index: 1;
+	height: 170px;
+	right: -7px;
+
+}
+
+.login_hidden>.ul_hidden {
+
+	margin-left: -15px;
+	margin-top: -15px;
+}
+
+.login_hidden>.ul_hidden>li {
+
+	height: 30px;
+	font-size: 12px;
+
+}
+
+.login_hidden>.ul_hidden>li>a {
+
+	color: black;
+	font-weight: lighter;
+}
+
+div.person_img>div.login_hidden {
+
+	display: none;
+
+}
+
+div.person_img:hover .login_hidden {
+	display: block;
+
+}
+/* 导航栏结束 */

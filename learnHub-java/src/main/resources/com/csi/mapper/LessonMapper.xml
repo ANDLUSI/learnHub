@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csi.mapper.LessonMapper">
+
+    <!--根据课程id查询课时信息-->
+    <select id="findLessonById" resultType="lesson">
+        select id, chapter_id, lesson_name, video_url, duration, order_index from lesson where course_id = #{id}
+    </select>
+
+
+    <!--新增课时信息-->
+    <insert id="insertLesson" parameterType="lesson">
+        insert into lesson(chapter_id, lesson_name, video_url, course_id, order_index, createdate)
+            value(#{chapterId}, #{lessonName}, #{videoUrl}, #{courseId}, #{orderIndex}, #{creatdate})
+    </insert>
+
+    <delete id="del">
+        DELETE FROM lesson WHERE id = #{id}
+    </delete>
+
+
+    <!--查询课时的视频路径-->
+    <select id="findLessonVideo" parameterType="integer">
+        select video_url from lesson where id = #{id}
+    </select>
+
+
+    <!--查询课程信息-->
+    <select id="findLessonInfo" resultType="lesson">
+        select * from lesson where id = #{id}
+    </select>
+
+
+    <!--更新课时的视频总长度-->
+    <update id="videoTotalLength">
+        update lesson set
+            lesson_name = #{lessonName}, video_url = #{videoUrl}, duration = #{duration},
+            course_id = #{courseId}, order_index = #{orderIndex}, createdate = #{creatdate}
+        where id = #{id}
+    </update>
+
+
+    <!--获取视频总长度-->
+    <select id="videoDuration" resultType="double">
+        select duration from lesson where id = #{id}
+    </select>
+
+
+    <!--  查询课时最有的章节ID和课程ID-->
+    <select id="selectLessonAndCourse" resultType="com.csi.domain.Lesson">
+          select chapter_id,course_id from lesson where  id=#{lessonId}
+    </select>
+
+
+
+
+<!--    更具当前课时顺序，和上一个课时id查询当前课时信息-->
+    <select id="selectLessonInfo" resultType="com.csi.domain.Lesson" >
+        SELECT
+        video_url ,id,order_index
+        FROM
+        lesson
+        WHERE
+        order_index = #{orderIndex}
+        AND chapter_id = ( SELECT chapter_id FROM lesson WHERE id = #{lessonId} );
+    </select>
+</mapper>
